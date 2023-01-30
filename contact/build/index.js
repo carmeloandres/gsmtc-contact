@@ -1,0 +1,1 @@
+(()=>{"use strict";const t=window.wp.element;(0,window.wp.blocks.registerBlockType)("gsmtc/contact",{title:"Contact",category:"widgets",icon:"admin-users",edit:()=>(0,t.createElement)("h2",null,"Contact"),save:()=>(0,t.createElement)("h2",null,"Contact")})})();
