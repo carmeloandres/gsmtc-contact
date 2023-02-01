@@ -1,9 +1,10 @@
-import{registerBlockType} from "@wordpress/blocks"
+import { registerBlockType} from "@wordpress/blocks";
+import { Edit } from "./edit";
 
 registerBlockType("gsmtc/contact",{
     title: "Contact",
     category: "widgets",
     icon: "admin-users",
-    edit: () => <h2>Contact</h2>,
+    edit: Edit,
     save: () => <h2>Contact</h2>
 });
