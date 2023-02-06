@@ -38,10 +38,25 @@ register_activation_hook(__FILE__,array($gsmtc_contact,'activate'));
 			ademas tiene las dependencias que hemos obtenido en assets_file
 			y la version  *******/
 	wp_register_script(
-		'gsmtc-register-block',
+		'gsmtc-contact-register-block',
 		plugins_url('./contact/build/index.js',__FILE__),
 		$assets_file['dependencies'],
 		$assets_file['version'],	
+	);
+	/** Funcion de wordpress para registrar el script del submit del bloque  */
+	wp_register_script(
+		'gsmtc-contact-submit',
+		plugins_url('./contact/contact-submit.js',__FILE__),
+		$assets_file['dependencies'],
+		$assets_file['version'],	
+	);
+
+	/** Funcion de wordpress para registrar los estilos del bloque contact */
+	wp_register_style(
+		'gsmtc-contact-style',
+		plugins_url('contact/build/style-index.css',__FILE__),
+		array(),
+		$assets_file['version']
 	);
 	
 	/***** funcion especifica de wordpress para registrar el bloque
@@ -51,7 +66,9 @@ register_activation_hook(__FILE__,array($gsmtc_contact,'activate'));
 		register_block_type(
 		'gsmtc/contact',
 		array(
-			'editor_script' => 'gsmtc-register-block',
+			'editor_script' => 'gsmtc-contact-register-block',
+			'style'			=> 'gsmtc-contact-style',
+			'script'		=> 'gsmtc-contact-submit'
 		)
 	);
 }

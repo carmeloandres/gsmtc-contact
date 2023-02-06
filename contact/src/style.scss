@@ -1,0 +1,56 @@
+.wp-block-gsmtc-contact{
+    .gsmtc-contact{
+        background-color: rgba(0,0,0,0);
+//        border: 1px solid #2f4f80; 
+        margin:0;
+        padding: 0;
+        color : #2f4f80;
+        
+        .gsmtc-contact-titulo{
+            color : #2f4f80;
+            margin: 0;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .gsmtc-contact-form{
+            box-sizing: border-box;
+            margin: 10px;
+    //        border: 1px solid #2f4f80; 
+            
+            .gsmtc-contact-input{
+                border: 2px solid #2f4f80;
+                border-radius: 5px;
+                box-sizing: border-box;
+                height: 40px;
+                margin: 1% 0;
+                padding: 0 1%;
+                width : 100%;
+            }
+            .gsmtc-contact-submit{
+                background-color: #2f4f80;
+                border-radius: 5px;
+                font-size: 15px;
+                font-weight: bold;
+                height: 40px;
+                color: #ffffff;            
+                width: 100%;
+                &:hover{
+                    box-shadow: 5px 5px 15px #2f4f80
+                }
+            }
+    
+            .gsmtc-contact-textarea{
+                border: 2px solid #2f4f80;
+                border-radius: 5px;
+                box-sizing: border-box;
+                height: 150px;
+                padding: 0 1%;
+                width : 100%;
+                &:hover{
+                    box-shadow: 5px 5px 15px #2f4f80
+                }
+            }
+        }
+    }
+}

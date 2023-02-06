@@ -1,31 +1,40 @@
 export const Edit = (props) => {
+ 
+    const { className } = props;
+
     return(
-    <>
-    <h1>Formulario con Custom Hook</h1>
+    
+    <div className={ className }>
+        <div className="gsmtc-contact">
+            <h2 className="gsmtc-contact-titulo">Contacto</h2>
+            <form className="gsmtc-contact-form">
+                <input
+                    type="text"
+                    className="gsmtc-contact-input"
+                    placeholder="nombre (requerido)"
+                    name="username"
+                /> 
+                <input
+                    type="email"
+                    className="gsmtc-contact-input"
+                    placeholder="email (requerido)"
+                    name="email"
+                />               
+                <textarea
+                    className="gsmtc-contact-textarea"
+                    placeholder="Mensaje (requerido)"
+                    name="mensaje"
+                /> 
+                <input
+                    type="submit"
+                    className="gsmtc-contact-submit"
+                    value="Contactar"
+                    name="email"
+                />               
+            </form>
+        </div>
+    </div>
 
-    <input
-        type="text"
-        className="form-control"
-        placeholder="Username"
-        name="username"
-    /> 
-
-    <input
-        type="email"
-        className="form-control mt-2"
-        placeholder="carmeload@hotmail.com"
-        name="email"
-    /> 
-              
-
-    <input
-        type="text"
-        className="form-control mt-2"
-        placeholder="Contraseña"
-        name="password"
-    /> 
-
-</>
 
     )
 
