@@ -1,10 +1,13 @@
 
-const gsmtcContactSubmit = (event) => {
+const gsmtcContactSubmit = async (event) => {
     event.preventDefault();
     console.log('"contact-submit" pulsado');
   
     let inputs = Array.from(event.target.querySelectorAll("input"))
     let textareas = Array.from(event.target.querySelectorAll("textarea"));
+    const headers = new Headers({
+      'X-WP-Nonce': gsmtcContactApi.nonce
+    });
     let dataForm = new FormData();
   
     inputs.forEach(input => {
@@ -17,13 +20,24 @@ const gsmtcContactSubmit = (event) => {
 
         }
       
-      console.log (input.name,' - ' ,input.value);
+      console.log (input.name,input.value);
     });
   
     textareas.forEach( textarea => {
         dataForm.append(textarea.name,textarea.value)
       console.log (textarea,textarea.value);
     })
+
+    const respQuery = await fetch(gsmtcContactApi.restUrl,{
+      method: 'POST',
+      headers: headers,
+      body: dataForm
+    }); 
+
+    if (respQuery.ok){
+      let resultQuery = await respQuery.json();
+      console.log(resultQuery);
+    }
   
   }
 
@@ -62,7 +76,7 @@ const gsmtcContactSubmit = (event) => {
         accordeonContent.style.display = 'none';
     });
 
-
+    console.log(JSON.stringify(gsmtcContactApi));
     // submit.addEventListener('submit',gsmtcContactSubmitLocal);
   
 });

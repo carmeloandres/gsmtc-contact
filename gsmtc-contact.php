@@ -71,7 +71,18 @@ register_activation_hook(__FILE__,array($gsmtc_contact,'activate'));
 			'script'		=> 'gsmtc-contact-script'
 		)
 	);
+
+	/**
+	 * Esta función carga las datos para acceder a la api y poder hacer el posteo de los contactos
+	 */
+	wp_localize_script('gsmtc-contact-script','gsmtcContactApi',array(
+		'restUrl' => rest_url('/gsmtc/contact'),
+		'nonce' => wp_create_nonce('wp_rest')
+	));
+
 }
 
 /**** Hook necesarios para incluir la función de registro de bloque en wordpress ******/
 add_action('init','gsmtc_register_blocks');
+
+
