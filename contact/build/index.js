@@ -85,18 +85,18 @@ const Edit = props => {
     required: true
   }), "He leido y acepto la ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlPoliticaPrivacidad,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "Pol\xEDtica de privacidad")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "submit",
     className: "gsmtc-contact-submit",
     value: "Contactar",
     name: "submit"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "gsmtc-contact-notice"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "gsmtc-contact-accordeon-button",
     name: "boton-accordeon"
-  }, "Puedes ver la informaci\xF3n b\xE1sica sobre protecci\xF3n de datos aqu\xED ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "gsmtc-contact-down-arrowhead"
-  }, "\u02C5")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Puedes ver la informaci\xF3n b\xE1sica sobre protecci\xF3n de datos pulsando aqu\xED"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "gsmtc-contact-accordeon-content"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "gsmtc-contact-lista"
@@ -110,13 +110,13 @@ const Edit = props => {
     className: "gsmtc-contact-lista-item"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, "Informaci\xF3n adicional:"), " Puedes consultar el ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlAvisoLegal,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "aviso legal"), " as\xED como la  ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlPoliticaPrivacidad,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "pol\xEDtica de privacidad"), " y la ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlPoliticaCookies,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "Pol\xEDtica de cookies"), " si deseas m\xE1s informaci\xF3n.")))))));
 };
 
@@ -216,18 +216,18 @@ const Save = props => {
     required: true
   }), "He leido y acepto la ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlPoliticaPrivacidad,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "Pol\xEDtica de privacidad")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "submit",
     className: "gsmtc-contact-submit",
     value: "Contactar",
     name: "submit"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "gsmtc-contact-notice"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "gsmtc-contact-accordeon-button",
     name: "boton-accordeon"
-  }, "Puedes ver la informaci\xF3n b\xE1sica sobre protecci\xF3n de datos aqu\xED ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "gsmtc-contact-down-arrowhead"
-  }, "\u02C5")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Puedes ver la informaci\xF3n b\xE1sica sobre protecci\xF3n de datos pulsando aqu\xED"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "gsmtc-contact-accordeon-content"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "gsmtc-contact-lista"
@@ -241,13 +241,13 @@ const Save = props => {
     className: "gsmtc-contact-lista-item"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, "Informaci\xF3n adicional:"), " Puedes consultar el ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlAvisoLegal,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "aviso legal"), " as\xED como la ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlPoliticaPrivacidad,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "pol\xEDtica de privacidad"), " y la ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: urlPoliticaCookies,
-    className: "gsmtc-contact-enlace-politica-privacidad"
+    className: "gsmtc-contact-enlace"
   }, "Pol\xEDtica de cookies"), " si deseas m\xE1s informaci\xF3n."))))));
 };
 

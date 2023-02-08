@@ -59,7 +59,7 @@ export const Edit = (props) => {
                         name="aceptacion"
                         required={true}
                     />
-                    He leido y acepto la <a href={urlPoliticaPrivacidad} className="gsmtc-contact-enlace-politica-privacidad">Política de privacidad</a>
+                    He leido y acepto la <a href={urlPoliticaPrivacidad} className="gsmtc-contact-enlace">Política de privacidad</a>
                 </label>
                 <input
                     type="submit"
@@ -67,12 +67,14 @@ export const Edit = (props) => {
                     value="Contactar"
                     name="submit"
                 />
-                <button
+                <div className="gsmtc-contact-notice">
+                </div>  
+                <a 
                     className="gsmtc-contact-accordeon-button"
                     name="boton-accordeon"
                 >             
-                    Puedes ver la información básica sobre protección de datos aquí <span className="gsmtc-contact-down-arrowhead">&#709;</span>
-                </button>
+                    Puedes ver la información básica sobre protección de datos pulsando aquí
+                </a>
                 <div className="gsmtc-contact-accordeon-content">
                     <ul className="gsmtc-contact-lista">
                         <li className="gsmtc-contact-lista-item">
@@ -85,7 +87,7 @@ export const Edit = (props) => {
                             <b>Derechos:</b> Podrás ejercer tus derechos de acceso, rectificación, limitación y suprimir datos de este formulario
                         </li>
                         <li className="gsmtc-contact-lista-item">
-                            <b>Información adicional:</b> Puedes consultar el <a href={urlAvisoLegal} className="gsmtc-contact-enlace-politica-privacidad">aviso legal</a> así como la  <a href={urlPoliticaPrivacidad} className="gsmtc-contact-enlace-politica-privacidad">política de privacidad</a> y la <a href={urlPoliticaCookies} className="gsmtc-contact-enlace-politica-privacidad">Política de cookies</a> si deseas más información.
+                            <b>Información adicional:</b> Puedes consultar el <a href={urlAvisoLegal} className="gsmtc-contact-enlace">aviso legal</a> así como la  <a href={urlPoliticaPrivacidad} className="gsmtc-contact-enlace">política de privacidad</a> y la <a href={urlPoliticaCookies} className="gsmtc-contact-enlace">Política de cookies</a> si deseas más información.
                         </li>
                     </ul>
                 </div>

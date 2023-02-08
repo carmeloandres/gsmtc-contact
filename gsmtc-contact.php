@@ -45,8 +45,8 @@ register_activation_hook(__FILE__,array($gsmtc_contact,'activate'));
 	);
 	/** Funcion de wordpress para registrar el script del submit del bloque  */
 	wp_register_script(
-		'gsmtc-contact-submit',
-		plugins_url('./contact/contact-submit.js',__FILE__),
+		'gsmtc-contact-script',
+		plugins_url('./contact/gsmtc-contact.js',__FILE__),
 		$assets_file['dependencies'],
 		$assets_file['version'],	
 	);
@@ -68,7 +68,7 @@ register_activation_hook(__FILE__,array($gsmtc_contact,'activate'));
 		array(
 			'editor_script' => 'gsmtc-contact-register-block',
 			'style'			=> 'gsmtc-contact-style',
-			'script'		=> 'gsmtc-contact-submit'
+			'script'		=> 'gsmtc-contact-script'
 		)
 	);
 }

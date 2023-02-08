@@ -20,16 +20,7 @@
   padding: 0 1%;
   width: 100%;
 }
-.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-submit {
-  background-color: #2f4f80;
-  border-radius: 5px;
-  font-size: 15px;
-  font-weight: bold;
-  height: 40px;
-  color: #ffffff;
-  width: 100%;
-}
-.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-submit:hover {
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-input:hover {
   box-shadow: 5px 5px 15px #2f4f80;
 }
 .wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-textarea {
@@ -42,6 +33,43 @@
 }
 .wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-textarea:hover {
   box-shadow: 5px 5px 15px #2f4f80;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-checkbox-container {
+  margin: 1%;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-enlace {
+  color: #2f4f80;
+  font-weight: bold;
+  text-decoration: none;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-submit {
+  background-color: #2f4f80;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  height: 40px;
+  color: #ffffff;
+  width: 100%;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-submit:hover {
+  box-shadow: 5px 5px 15px #2f4f80;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-accordeon-button {
+  background-color: #fff;
+  border: 1px solid #2f4f80;
+  border-radius: 5px;
+  color: #2f4f80;
+  display: flex;
+  margin: 1% 0;
+  padding: 6px;
+  text-decoration: none;
+  width: 98%;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-accordeon-button:hover {
+  box-shadow: 5px 5px 15px #2f4f80;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-accordeon-content {
+  width: 100%;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
