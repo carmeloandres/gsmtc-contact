@@ -32,11 +32,26 @@ export const Save = (props) => {
                 required={true}
             /> 
             <input
+                type="checkbox"
+                className="gsmtc-contact-checkbox"
+                name="aceptacion"
+                required={true}
+            />
+            <input
                 type="submit"
                 className="gsmtc-contact-submit"
                 value="Contactar"
                 name="submit"
-            />               
+            />  
+            <input
+                type="button"
+                className="gsmtc-contact-accordeon-button"
+                value={'Puedes ver la información básica sobre protección de datos aqui &#62'}
+                name="boton-accordeon"
+            />             
+            <div className="gsmtc-contact-accordeon-content">
+                contenido del acordeon
+            </div>
         </form>
         </div>
     </div>

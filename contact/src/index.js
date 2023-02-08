@@ -8,6 +8,17 @@ registerBlockType("gsmtc/contact",{
     title: "Contact",
     category: "widgets",
     icon: "admin-users",
+    attributes:{
+		urlPoliticaPrivacidad:{
+            type: 'string',
+		},
+		urlAvisoLegal:{
+            type: 'string',
+		},
+        urlPoliticaCookies:{
+            type: 'string',
+		}           
+    },
     edit: Edit,
     save: Save
 });

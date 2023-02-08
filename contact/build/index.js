@@ -14,39 +14,110 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 const Edit = props => {
   const {
-    className
+    className,
+    attributes,
+    setAttributes
   } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  const {
+    urlPoliticaPrivacidad,
+    urlAvisoLegal,
+    urlPoliticaCookies
+  } = attributes;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Panel, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Opciones",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Url de la pol\xEDtica de privacidad",
+    value: urlPoliticaPrivacidad,
+    onChange: newLabel => setAttributes({
+      urlPoliticaPrivacidad: newLabel
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Url del aviso legal",
+    value: urlAvisoLegal,
+    onChange: newLabel => setAttributes({
+      urlAvisoLegal: newLabel
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Url de la pol\xEDtica de cookies",
+    value: urlPoliticaCookies,
+    onChange: newLabel => setAttributes({
+      urlPoliticaCookies: newLabel
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "gsmtc-contact"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "gsmtc-contact-titulo"
-  }, "Contacto"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
     className: "gsmtc-contact-form"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     className: "gsmtc-contact-input",
     placeholder: "nombre (requerido)",
-    name: "username"
+    name: "nombre",
+    required: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "email",
     className: "gsmtc-contact-input",
     placeholder: "email (requerido)",
-    name: "email"
+    name: "email",
+    required: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("textarea", {
     className: "gsmtc-contact-textarea",
     placeholder: "Mensaje (requerido)",
-    name: "mensaje"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    name: "mensaje",
+    required: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "gsmtc-contact-checkbox-container"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "checkbox",
+    className: "gsmtc-contact-checkbox",
+    name: "aceptacion",
+    required: true
+  }), "He leido y acepto la ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: urlPoliticaPrivacidad,
+    className: "gsmtc-contact-enlace-politica-privacidad"
+  }, "Pol\xEDtica de privacidad")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "submit",
     className: "gsmtc-contact-submit",
     value: "Contactar",
     name: "email"
-  }))));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "gsmtc-contact-accordeon-button",
+    name: "boton-accordeon"
+  }, "Puedes ver la informaci\xF3n b\xE1sica sobre protecci\xF3n de datos aqui ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "gsmtc-contact-down-arrowhead"
+  }, "\u02C5")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "gsmtc-contact-accordeon-content"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "gsmtc-contact-lista"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: "gsmtc-contact-lista-item"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, "Respondable:"), "Carmelo Andr\xE9s Desco"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: "gsmtc-contact-lista-item"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, "Finalidad:"), "Atender tu consulta"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: "gsmtc-contact-lista-item"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, "Derechos:"), "Podr\xE1s ejercer tus derechos de acceso, rectificaci\xF3n, limitacion y suprimir datos de este formulario"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: "gsmtc-contact-lista-item"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("b", null, "Informaci\xF3n adicional:"), "Puedes consultar el ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: urlAvisoLegal,
+    className: "gsmtc-contact-enlace-politica-privacidad"
+  }, "aviso legal"), "asi como la ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: urlPoliticaPrivacidad,
+    className: "gsmtc-contact-enlace-politica-privacidad"
+  }, "pol\xEDtica de privacidad"), " y la", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: urlPoliticaCookies,
+    className: "gsmtc-contact-enlace-politica-privacidad"
+  }, "Pol\xEDtica de cookies"), " si deseas m\xE1s informacin.")))))));
 };
 
 /***/ }),
@@ -71,6 +142,17 @@ __webpack_require__.r(__webpack_exports__);
   title: "Contact",
   category: "widgets",
   icon: "admin-users",
+  attributes: {
+    urlPoliticaPrivacidad: {
+      type: 'string'
+    },
+    urlAvisoLegal: {
+      type: 'string'
+    },
+    urlPoliticaCookies: {
+      type: 'string'
+    }
+  },
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__.Edit,
   save: _save__WEBPACK_IMPORTED_MODULE_2__.Save
 });
@@ -122,11 +204,23 @@ const Save = props => {
     name: "mensaje",
     required: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "checkbox",
+    className: "gsmtc-contact-checkbox",
+    name: "aceptacion",
+    required: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "submit",
     className: "gsmtc-contact-submit",
     value: "Contactar",
     name: "submit"
-  }))));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "button",
+    className: "gsmtc-contact-accordeon-button",
+    value: 'Puedes ver la información básica sobre protección de datos aqui &#62',
+    name: "boton-accordeon"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "gsmtc-contact-accordeon-content"
+  }, "contenido del acordeon"))));
 };
 
 /***/ }),
@@ -143,6 +237,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
 /***/ "@wordpress/blocks":
 /*!********************************!*\
   !*** external ["wp","blocks"] ***!
@@ -150,6 +254,16 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
 
 /***/ }),
 
