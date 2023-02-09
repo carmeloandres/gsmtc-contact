@@ -46,7 +46,7 @@ export const Save = (props) => {
                     value="Contactar"
                     name="submit"
                 />
-                <div className="gsmtc-contact-notice">
+                <div id="gsmtc-alerta" className="gsmtc-contact-alerta-apagada">
                 </div>  
                 <a 
                     className="gsmtc-contact-accordeon-button"

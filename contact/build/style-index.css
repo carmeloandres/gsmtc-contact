@@ -54,6 +54,48 @@
 .wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-submit:hover {
   box-shadow: 5px 5px 15px #2f4f80;
 }
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-alerta-apagada {
+  display: none;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-alerta-precaucion {
+  background-color: #fff3cd;
+  border-color: #ffecb5;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #664d03;
+  font-size: 12px;
+  margin: 5px 0;
+  text-align: center;
+  padding: 5px;
+  transition: 0.4s;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-alerta-error {
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #842029;
+  font-size: 12px;
+  margin: 5px 0;
+  text-align: center;
+  padding: 5px;
+  transition: 0.4s;
+}
+.wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-alerta-exito {
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #0f5132;
+  font-size: 12px;
+  margin: 5px 0;
+  text-align: center;
+  padding: 5px;
+  transition: 0.4s;
+}
 .wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-accordeon-button {
   background-color: #fff;
   border: 1px solid #2f4f80;

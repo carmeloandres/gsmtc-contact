@@ -16,7 +16,42 @@ class Gsmtc_Contact{
 
         add_action('init',array($this,'init'));
 		add_action('rest_api_init',array($this,'endpoints')); 
+		add_filter('bulk_actions-edit-gsmtc-contact',array($this,'bulk_actions'));
+		add_filter('handle_bulk_actions-edit-gsmtc-contact',array($this,'handle_bulk_actions'),10,3);
+		add_filter('manage_posts_columns',array($this,'manage_posts_columns'),10,2);
+		add_filter('manage_gsmtc-contact_posts_columns',array($this,'manage_gsmtc_contact_posts_columns'),10,2);
+		add_action('manage_gsmtc-contact_posts_custom_column',array($this,'manage_gsmtc_contact_posts_custom_column'),10,2);
+
+
 	}
+
+	function manage_posts_columns($post_columns, $post_type){
+		error_log ('the function "manage_posts_columns" has been executed - post_columns: '.var_export($post_columns,true).PHP_EOL);
+		error_log ('the function "manage_posts_columns" has been executed - post_type: '.var_export($post_type,true));
+
+		return $post_columns;
+	}
+
+
+	function manage_gsmtc_contact_posts_columns($post_columns){
+		$post_columns['email'] = 'Correo';
+		error_log ('the function "manage_gsmtc_contact_posts_columns" has been executed - post_columns: '.var_export($post_columns,true).PHP_EOL);
+
+		return $post_columns;
+	}
+
+	function manage_gsmtc_contact_posts_custom_column($column_name, $post_id){
+		error_log ('the function "manage_gsmtc_contact_post_custom_column" has been executed - column_name: '.var_export($column_name,true).PHP_EOL);
+		error_log ('the function "manage_gsmtc_contact_post_custom_column" has been executed - post_id: '.var_export($post_id,true).PHP_EOL);
+
+		switch ($column_name){
+			case 'email':
+					echo get_post_meta($post_id,'email',true);
+		}
+
+	//		return $post_column;
+	}
+
 
     /**
 	 * This method is used to activate the plugin
@@ -117,7 +152,7 @@ class Gsmtc_Contact{
 					'post_content' => wp_strip_all_tags($params['mensaje']),
 					'post_type' => 'gsmtc-contact',
 					'post_status' => 'publish',
-					'meta_inpñut' => $meta_contact
+					'meta_input' => $meta_contact
 				);
 
 				wp_insert_post($post_contact);
@@ -203,5 +238,47 @@ class Gsmtc_Contact{
 		}
 
 	 }
+
+	/**
+	 * bulk_actions
+	 * 
+	 * This method add an action to the bulk list of gsmtc-contant post type admin page 
+	 *
+	 * @return array
+	 */
+
+	function bulk_actions($actions) {
+//		error_log ('the function "my_custom_bulk_actions" has been executed : '.var_export($actions,true));
+
+//		$current_screen = get_current_screen();
+//		error_log ('the function "my_custom_bulk_actions" has been executed - $current_screen: '.var_export($current_screen,true));
+
+		$actions['spam-gsmtc']='Marcar como span y eliminar';
+      return $actions;
+    }
+
+	/**
+	 * handle_bulk_actions
+	 * 
+	 * This method perform the action aftere submited bulk actions at gsmtc-contact admin page 
+	 *
+	 * @return array
+	 */
+
+	function handle_bulk_actions($sendback,$doaction,$items) {
+		if ($doaction == 'spam-gsmtc'){
+			
+		}
+		error_log ('the function "my_handle_bulk_actions" has been executed - senback: '.var_export($sendback,true).PHP_EOL);
+		error_log ('the function "my_handle_bulk_actions" has been executed - doaction: '.var_export($doaction,true));
+		error_log ('the function "my_handle_bulk_actions" has been executed - items: '.var_export($items,true));
+
+//		$current_screen = get_current_screen();$doation
+//		error_log ('the function "my_custom_bulk_actions" has been executed - $current_screen: '.var_export($current_screen,true));
+
+//		$actions['spam-gsmtc']='Marcar como span y eliminar';
+//		unset( $actions['delete'] );
+        return $sendback;
+    }
 
 }

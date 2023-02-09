@@ -92,7 +92,8 @@ const Edit = props => {
     value: "Contactar",
     name: "submit"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "gsmtc-contact-notice"
+    id: "gsmtc-alerta",
+    className: "gsmtc-contact-alerta-apagada"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "gsmtc-contact-accordeon-button",
     name: "boton-accordeon"
@@ -223,7 +224,8 @@ const Save = props => {
     value: "Contactar",
     name: "submit"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "gsmtc-contact-notice"
+    id: "gsmtc-alerta",
+    className: "gsmtc-contact-alerta-apagada"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "gsmtc-contact-accordeon-button",
     name: "boton-accordeon"

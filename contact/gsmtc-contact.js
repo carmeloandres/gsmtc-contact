@@ -1,14 +1,19 @@
 
 const gsmtcContactSubmit = async (event) => {
-    event.preventDefault();
-    console.log('"contact-submit" pulsado');
+  event.preventDefault();
   
-    let inputs = Array.from(event.target.querySelectorAll("input"))
-    let textareas = Array.from(event.target.querySelectorAll("textarea"));
+  let alerta = event.target.querySelector("#gsmtc-alerta");
+
+    alerta.className = "gsmtc-contact-alerta-precaucion"
+    alerta.innerHTML = "Enviando la información espere por favor"
+
     const headers = new Headers({
       'X-WP-Nonce': gsmtcContactApi.nonce
     });
     let dataForm = new FormData();
+
+    let inputs = Array.from(event.target.querySelectorAll("input"))
+    let textareas = Array.from(event.target.querySelectorAll("textarea"));
   
     inputs.forEach(input => {
         switch (input.name){
@@ -17,15 +22,15 @@ const gsmtcContactSubmit = async (event) => {
                 break;
             case 'email':
                 dataForm.append('email',input.value);
-
-        }
-      
-      console.log (input.name,input.value);
+                break;
+            case 'aceptacion':
+                dataForm.append('aceptacion',input.value);
+        }    
     });
   
     textareas.forEach( textarea => {
         dataForm.append(textarea.name,textarea.value)
-      console.log (textarea,textarea.value);
+//      console.log (textarea,textarea.value);
     })
 
     const respQuery = await fetch(gsmtcContactApi.restUrl,{
@@ -36,9 +41,19 @@ const gsmtcContactSubmit = async (event) => {
 
     if (respQuery.ok){
       let resultQuery = await respQuery.json();
-      console.log(resultQuery);
-    }
-  
+      if (resultQuery > 0){
+        alerta.className = "gsmtc-contact-alerta-exito"
+        alerta.innerHTML = "La información se ha enviado con exito, GRACIAS !!!"
+        setTimeout((alerta) => {
+          alerta.className = "gsmtc-contact-alerta-apagada";
+          alerta.innerHTML = "";
+        },6000);
+      } else {
+        alerta.className = "gsmtc-contact-alerta-error"
+        alerta.innerHTML = "Disculpe, la información no podido ser envida, intentelo de nuevo por favor"
+      }
+//      console.log(resultQuery);
+    }  
   }
 
   const gsmtcContactToggleAccordeon = ( event ) => {
@@ -55,11 +70,11 @@ const gsmtcContactSubmit = async (event) => {
   }
 
   window.addEventListener('load',() => {
-    console.log('Script "gsmtc-contact" cargado');
+//    console.log('Script "gsmtc-contact" cargado');
     let gsmtcSubmit = document.getElementsByClassName("gsmtc-contact-form");
-    let gsmtcNotice = document.getElementsByClassName("gsmtc-contact-notice");
     let gsmtcAccordeonButon = document.getElementsByClassName("gsmtc-contact-accordeon-button");
     let gsmtcAccordeonContent = document.getElementsByClassName("gsmtc-contact-accordeon-content");
+
     Array.prototype.forEach.call(gsmtcSubmit, (submit) => {
       submit.addEventListener('submit',gsmtcContactSubmit);
     });
@@ -67,16 +82,12 @@ const gsmtcContactSubmit = async (event) => {
     Array.prototype.forEach.call(gsmtcAccordeonButon, (button) => {
         button.addEventListener('click',gsmtcContactToggleAccordeon);
       });
-      
-    Array.prototype.forEach.call(gsmtcNotice, (notice) => {
-        notice.style.display = 'none';
-    });
-      
+            
     Array.prototype.forEach.call(gsmtcAccordeonContent, (accordeonContent) => {
         accordeonContent.style.display = 'none';
     });
 
-    console.log(JSON.stringify(gsmtcContactApi));
+  //  console.log(JSON.stringify(gsmtcContactApi));
     // submit.addEventListener('submit',gsmtcContactSubmitLocal);
   
 });
