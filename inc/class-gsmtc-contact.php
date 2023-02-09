@@ -18,39 +18,12 @@ class Gsmtc_Contact{
 		add_action('rest_api_init',array($this,'endpoints')); 
 		add_filter('bulk_actions-edit-gsmtc-contact',array($this,'bulk_actions'));
 		add_filter('handle_bulk_actions-edit-gsmtc-contact',array($this,'handle_bulk_actions'),10,3);
-		add_filter('manage_posts_columns',array($this,'manage_posts_columns'),10,2);
 		add_filter('manage_gsmtc-contact_posts_columns',array($this,'manage_gsmtc_contact_posts_columns'),10,2);
 		add_action('manage_gsmtc-contact_posts_custom_column',array($this,'manage_gsmtc_contact_posts_custom_column'),10,2);
 
 
 	}
 
-	function manage_posts_columns($post_columns, $post_type){
-		error_log ('the function "manage_posts_columns" has been executed - post_columns: '.var_export($post_columns,true).PHP_EOL);
-		error_log ('the function "manage_posts_columns" has been executed - post_type: '.var_export($post_type,true));
-
-		return $post_columns;
-	}
-
-
-	function manage_gsmtc_contact_posts_columns($post_columns){
-		$post_columns['email'] = 'Correo';
-		error_log ('the function "manage_gsmtc_contact_posts_columns" has been executed - post_columns: '.var_export($post_columns,true).PHP_EOL);
-
-		return $post_columns;
-	}
-
-	function manage_gsmtc_contact_posts_custom_column($column_name, $post_id){
-		error_log ('the function "manage_gsmtc_contact_post_custom_column" has been executed - column_name: '.var_export($column_name,true).PHP_EOL);
-		error_log ('the function "manage_gsmtc_contact_post_custom_column" has been executed - post_id: '.var_export($post_id,true).PHP_EOL);
-
-		switch ($column_name){
-			case 'email':
-					echo get_post_meta($post_id,'email',true);
-		}
-
-	//		return $post_column;
-	}
 
 
     /**
@@ -137,30 +110,42 @@ class Gsmtc_Contact{
 	 function manage_api_request(WP_REST_Request $request ){
 
 		$params = $request->get_params();
-		$result = json_encode(0);
+		$result = 0;
 		if (isset($params['email'])){
 			error_log ('La funcion "manage_api_request" ha sido ejecutada : '.var_export($params,true));
 			if ( ! $this->is_in_spam($params['email']))
 			{
 				$meta_contact = array(
 					'email' => wp_strip_all_tags($params['email']),
-
+					'aceptacion' => wp_strip_all_tags($params['aceptacion'])
 				);
 
 				$post_contact = array(
-					'post_title' => $params['nombre'].' - '.$params['email'],
+					'post_title' =>wp_strip_all_tags( $params['nombre'] ), 
 					'post_content' => wp_strip_all_tags($params['mensaje']),
 					'post_type' => 'gsmtc-contact',
-					'post_status' => 'publish',
+					'post_status' => 'private',
 					'meta_input' => $meta_contact
 				);
 
-				wp_insert_post($post_contact);
+				$result = wp_insert_post($post_contact);
+				if ($result > 0){
+					$administradores = get_users(array('role_in' => 'administrator'));
+					foreach( $administradores as $administrador){
+						$mensaje = 'Se ha enviado información de contacto desde '.homer_url().PHP_EOL;
+						$mensaje .= 'Nombre : '.$params['nombre'].PHP_EOL;
+						$mensaje .= 'Email : '.$params['email'].PHP_EOL;
+						$mensaje .= 'Mensaje : '.$params['mensaje'].PHP_EOL;
+						$mensaje .= 'A las '.date('H:i').' del '.date('d-m-Y').PHP_EOL;
 
-			}
+						wp_email($administrador->user_email,'Contacto desde '.home_url().' - por :'.$params['nombre'],$mensaje);
+					}
+				}
+
+			} else $result = 1; // Para no mostrar error a los spamers
 
 		} 
-		echo $result;
+		echo json_encode($result);
 		exit();
 	}
 
@@ -280,5 +265,57 @@ class Gsmtc_Contact{
 //		unset( $actions['delete'] );
         return $sendback;
     }
+
+	/**
+	 * manage_gsmtc_contact_posts_columns
+	 * 
+	 * This method add two new columns to the list of gsmtc-contact posts 
+	 *
+	 * @return array
+	 */
+
+	function manage_gsmtc_contact_posts_columns($post_columns){
+
+		$nuevas_columnas = array_merge( 
+				array_slice($post_columns,0,2,true),
+				array(
+					'email' => 'Correo',
+				),
+				array_slice($post_columns,2,1,true),
+				array(
+					'aceptacion' => 'RGPD'
+				)
+			);
+		
+		$nuevas_columnas['title'] = 'Nombre';
+
+
+		return $nuevas_columnas;
+	}
+
+	/**
+	 * manage_gsmtc_contact_posts_custom_column
+	 * 
+	 * This method add the content at de diferent cells of the list of gsmtc-contact posts 
+	 *
+	 * @return array
+	 */
+
+	function manage_gsmtc_contact_posts_custom_column($column_name, $post_id){
+
+		switch ($column_name){
+			case 'email':
+					echo get_post_meta($post_id,'email',true);
+					break;
+			case 'aceptacion':
+					$aceptacion = get_post_meta($post_id,'aceptacion',true);
+					if ($aceptacion == 'on')
+						echo '<input type="checkbox" disabled checked/>';
+					else
+						echo '<input type="checkbox" disabled />';
+					break;
+		}
+
+	}
 
 }
