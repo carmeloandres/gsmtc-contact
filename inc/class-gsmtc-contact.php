@@ -21,9 +21,7 @@ class Gsmtc_Contact{
 		add_filter('manage_gsmtc-contact_posts_columns',array($this,'manage_gsmtc_contact_posts_columns'),10,2);
 		add_action('manage_gsmtc-contact_posts_custom_column',array($this,'manage_gsmtc_contact_posts_custom_column'),10,2);
 
-
 	}
-
 
 
     /**
@@ -132,13 +130,13 @@ class Gsmtc_Contact{
 				if ($result > 0){
 					$administradores = get_users(array('role_in' => 'administrator'));
 					foreach( $administradores as $administrador){
-						$mensaje = 'Se ha enviado información de contacto desde '.homer_url().PHP_EOL;
+						$mensaje = 'Se ha enviado información de contacto desde '.home_url().PHP_EOL;
 						$mensaje .= 'Nombre : '.$params['nombre'].PHP_EOL;
 						$mensaje .= 'Email : '.$params['email'].PHP_EOL;
 						$mensaje .= 'Mensaje : '.$params['mensaje'].PHP_EOL;
 						$mensaje .= 'A las '.date('H:i').' del '.date('d-m-Y').PHP_EOL;
 
-						wp_email($administrador->user_email,'Contacto desde '.home_url().' - por :'.$params['nombre'],$mensaje);
+						wp_mail($administrador->user_email,'Contacto desde '.home_url().' - por :'.$params['nombre'],$mensaje);
 					}
 				}
 
@@ -251,12 +249,24 @@ class Gsmtc_Contact{
 	 */
 
 	function handle_bulk_actions($sendback,$doaction,$items) {
+		global $wpdb;
+
 		if ($doaction == 'spam-gsmtc'){
-			
+
+			foreach($items as $item){
+//				error_log ('the function "my_handle_bulk_actions" has been executed - inside-bucle - $item: '.var_export($item,true).PHP_EOL);
+
+				$spam_email = get_post_meta($item,'email',true);
+
+				if ( ! $this->is_in_spam($spam_email))
+					$wpdb->insert($this->table_name_spam,array('email' => $spam_email),array('%s'));
+
+				wp_delete_post($item,true);
+			}
 		}
-		error_log ('the function "my_handle_bulk_actions" has been executed - senback: '.var_export($sendback,true).PHP_EOL);
-		error_log ('the function "my_handle_bulk_actions" has been executed - doaction: '.var_export($doaction,true));
-		error_log ('the function "my_handle_bulk_actions" has been executed - items: '.var_export($items,true));
+//		error_log ('the function "my_handle_bulk_actions" has been executed - senback: '.var_export($sendback,true).PHP_EOL);
+//		error_log ('the function "my_handle_bulk_actions" has been executed - doaction: '.var_export($doaction,true));
+//		error_log ('the function "my_handle_bulk_actions" has been executed - items: '.var_export($items,true));
 
 //		$current_screen = get_current_screen();$doation
 //		error_log ('the function "my_custom_bulk_actions" has been executed - $current_screen: '.var_export($current_screen,true));
