@@ -20,6 +20,7 @@ class Gsmtc_Contact{
 		add_filter('handle_bulk_actions-edit-gsmtc-contact',array($this,'handle_bulk_actions'),10,3);
 		add_filter('manage_gsmtc-contact_posts_columns',array($this,'manage_gsmtc_contact_posts_columns'),10,2);
 		add_action('manage_gsmtc-contact_posts_custom_column',array($this,'manage_gsmtc_contact_posts_custom_column'),10,2);
+		add_action('transition_comment_status',array($this,'action_transition_comment_status'),10,3);
 
 	}
 
@@ -264,7 +265,6 @@ class Gsmtc_Contact{
 				wp_delete_post($item,true);
 			}
 		}
-//		error_log ('the function "my_handle_bulk_actions" has been executed - senback: '.var_export($sendback,true).PHP_EOL);
 //		error_log ('the function "my_handle_bulk_actions" has been executed - doaction: '.var_export($doaction,true));
 //		error_log ('the function "my_handle_bulk_actions" has been executed - items: '.var_export($items,true));
 
@@ -324,6 +324,30 @@ class Gsmtc_Contact{
 					else
 						echo '<input type="checkbox" disabled />';
 					break;
+		}
+
+	}
+
+	/**
+	 * action_transition_comment_status
+	 * 
+	 * This method adds the author email to spam table y the comment status change to spam
+	 * and delete from spam table if a spam comment is restored to approved
+	 *
+	 * @return void
+	 */
+
+	 function action_transition_comment_status($new_status, $old_status, $comment){
+
+		global $wpdb;
+
+		if ($new_status == 'spam'){
+			if ( ! $this->is_in_spam($comment->comment_author_email))
+			$wpdb->insert($this->table_name_spam,array('email' => $comment->comment_author_email),array('%s'));
+
+		} elseif ($old_status == 'spam' && $new_status == 'approved'){
+			if ($this->is_in_spam($comment->comment_author_email))
+				$wpdb->delete($this->table_name_spam,array('email' => $comment->comment_author_email));
 		}
 
 	}
