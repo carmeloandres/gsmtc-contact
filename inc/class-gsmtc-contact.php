@@ -111,7 +111,6 @@ class Gsmtc_Contact{
 		$params = $request->get_params();
 		$result = 0;
 		if (isset($params['email'])){
-			error_log ('La funcion "manage_api_request" ha sido ejecutada : '.var_export($params,true));
 			if ( ! $this->is_in_spam($params['email']))
 			{
 				$meta_contact = array(
@@ -126,10 +125,13 @@ class Gsmtc_Contact{
 					'post_status' => 'private',
 					'meta_input' => $meta_contact
 				);
-
+				
 				$result = wp_insert_post($post_contact);
 				if ($result > 0){
+					error_log ('La funcion "manage_api_request" ha sido ejecutada - get_users() : '.var_export(get_users(),true));
+
 					$administradores = get_users(array('role_in' => 'administrator'));
+					error_log ('La funcion "manage_api_request" ha sido ejecutada - $administradores: '.var_export($administradores,true));
 					foreach( $administradores as $administrador){
 						$mensaje = 'Se ha enviado información de contacto desde '.home_url().PHP_EOL;
 						$mensaje .= 'Nombre : '.$params['nombre'].PHP_EOL;
@@ -232,10 +234,6 @@ class Gsmtc_Contact{
 	 */
 
 	function bulk_actions($actions) {
-//		error_log ('the function "my_custom_bulk_actions" has been executed : '.var_export($actions,true));
-
-//		$current_screen = get_current_screen();
-//		error_log ('the function "my_custom_bulk_actions" has been executed - $current_screen: '.var_export($current_screen,true));
 
 		$actions['spam-gsmtc']='Marcar como span y eliminar';
       return $actions;
@@ -255,7 +253,6 @@ class Gsmtc_Contact{
 		if ($doaction == 'spam-gsmtc'){
 
 			foreach($items as $item){
-//				error_log ('the function "my_handle_bulk_actions" has been executed - inside-bucle - $item: '.var_export($item,true).PHP_EOL);
 
 				$spam_email = get_post_meta($item,'email',true);
 
@@ -265,14 +262,6 @@ class Gsmtc_Contact{
 				wp_delete_post($item,true);
 			}
 		}
-//		error_log ('the function "my_handle_bulk_actions" has been executed - doaction: '.var_export($doaction,true));
-//		error_log ('the function "my_handle_bulk_actions" has been executed - items: '.var_export($items,true));
-
-//		$current_screen = get_current_screen();$doation
-//		error_log ('the function "my_custom_bulk_actions" has been executed - $current_screen: '.var_export($current_screen,true));
-
-//		$actions['spam-gsmtc']='Marcar como span y eliminar';
-//		unset( $actions['delete'] );
         return $sendback;
     }
 

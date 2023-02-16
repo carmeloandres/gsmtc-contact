@@ -103,9 +103,9 @@
   color: #2f4f80;
   display: flex;
   margin: 1% 0;
-  padding: 6px;
+  padding: 2% 3%;
   text-decoration: none;
-  width: 98%;
+  width: 100%;
 }
 .wp-block-gsmtc-contact .gsmtc-contact .gsmtc-contact-form .gsmtc-contact-accordeon-button:hover {
   box-shadow: 5px 5px 15px #2f4f80;
